@@ -11,6 +11,12 @@
 	camera.position.x = 500;
 	camera.up.set( 0, 0, 1 );
 
+	window.addEventListener('resize', function() {
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+	});
+
 	//////////////////////////////////////////////////////////////////////////////////
 	//		add an object and make it move					//
 	//////////////////////////////////////////////////////////////////////////////////	
