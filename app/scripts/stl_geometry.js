@@ -109,6 +109,9 @@
 	}
 
 	function parseBinary(stlData) {
+		if (stlData.byteLength < 80) {
+			throw 'invalid STL file';
+		}
 		var vertexes  = [];
 		var faces     = [];
 

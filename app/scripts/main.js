@@ -44,7 +44,43 @@
 		xhr.send();
 	}
 
-	var staringY = 240;
+	var models = [
+		{
+			url: 'images/3derby_test_car.stl'
+		},
+		{
+			url: 'images/universal_joint_derby_car.stl'
+		},
+		{
+			url: 'images/teambelle-3derby_car.stl',
+			y: 50
+		},
+		{
+			url: 'images/pla_derby_spiney_shell_prototype.stl',
+			rotate: 180
+		},
+		{
+			url: 'images/3derby_test2_car.stl'
+		},
+		{
+			url: 'images/outatime.stl'
+		},
+		{
+			url: 'images/2013_3derby_trophy.stl'
+		},
+		{
+			url: 'images/ateam_pine_derby.stl'
+		},
+		{
+			url: 'images/pla_derby_blank_shape.stl'
+		},
+		{
+			url: 'images/koopa_troopa.stl',
+			rotate: 180
+		}
+	];
+	var staringY = 120 * (models.length-1)/2;
+
 	function stlBufferToScene(buffer, x, y, r) {
 		var geometry = new THREE.STLGeometry(buffer, x, y);
 		var material = new THREE.MeshNormalMaterial();
@@ -65,11 +101,10 @@
 		});
 	}
 
-	loadStl('images/3derby_test_car.stl');
-	loadStl('images/universal_joint_derby_car.stl');
-	loadStl('images/teambelle-3derby_car.stl', 0, 50);
-	loadStl('images/pla_derby_spiney_shell_prototype.stl', 0, 0, 180);
-	loadStl('images/koopa_troopa.stl', 0, 0, 180);
+	for (var i=0,len=models.length; i<len; i++) {
+		var model = models[i];
+		loadStl(model.url, model.x, model.y, model.rotate);
+	}
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//		Camera Controls							//
